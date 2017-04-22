@@ -1,7 +1,6 @@
 # HomeAssistant_configuration
-@SePo Lab - Sebastian - Tri Nguyen
+@SePo Lab - Sebastian 
 Facebook: Sebastian Podiago
-Email: tringuyen1506@gmail.com
 
 This is contain whole setup of homeassistant server side.
 Please review: Home Assistant System v1.0.0 04221017.pdf
