@@ -4,22 +4,22 @@ Facebook: Sebastian Podiago
 
 This is contain whole setup of homeassistant server side.
 Please review: Home Assistant System v1.0.0 04221017.pdf to get clear point
-Required version proposal : Home Assistant version 0.42.4
-Wireless Network: WiFi + Bluetooth
-Data transfer protocol: MQTT Broker http://mqtt.org/
+ - Required version proposal : Home Assistant version 0.42.4
+ - Wireless Network: WiFi + Bluetooth
+ - Data transfer protocol: MQTT Broker http://mqtt.org/
 
 
-Configration:
+# Configuration:
 - Install Home Assistant following https://home-assistant.io/getting-started/, pick up 0.42.4
 - My cases in virtual environment based on Raspbian Pi3
 - update homeassistant configuration folder with below .yaml files
-- For Air Conditioner platform, I re-coded default heatpump.py to ACControllMQTT_Sepo.py that can support control Air Conditioner via MQTT broker in JSON format. More details: view project ACControllMQTT
+- For Air Conditioner platform, I re-coded default heatpump.py to ACControllMQTT_Sepo.py that can support control Air Conditioner via MQTT broker in JSON format. More details: view project https://github.com/sepolab/HomeAssistant_Platforms
 
-New features:
+# New features:
 - Actionable Notification on iOS app
 - Slipt default configuration.yaml to smaller files .yaml to easy tracking
 
-For explanation:
+# For explanation:
 - Customize.yaml: GUI edit. REfer to: https://home-assistant.io/docs/configuration/customizing-devices/
 - Device_tracker.yaml: tracking device connect to local network via Mac Address. REfer to: https://home-assistant.io/components/device_tracker.nmap_tracker/
 - Camera.yaml: camera connection: foscam IP camera. Refer to: https://home-assistant.io/components/camera/
