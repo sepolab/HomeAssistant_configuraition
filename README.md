@@ -3,7 +3,7 @@
 Facebook: Sebastian Podiago
 
 This is contain whole setup of homeassistant server side.
-Please review: Home Assistant System v1.0.0 04221017.pdf
+Please review: Home Assistant System v1.0.0 04221017.pdf to get clear point
 Required version proposal : Home Assistant version 0.42.4
 Wireless Network: WiFi + Bluetooth
 Data transfer protocol: MQTT Broker http://mqtt.org/
@@ -12,8 +12,8 @@ Data transfer protocol: MQTT Broker http://mqtt.org/
 Configration:
 - Install Home Assistant following https://home-assistant.io/getting-started/, pick up 0.42.4
 - My cases in virtual environment based on Raspbian Pi3
-- update homeassistant configuration folder with below .yaml file
-- For Air Conditioner platform, I re-coded default heatpump.py to ACControllMQTT_Sepo.py that can support control Air Conditioner via MQTT broker in JSON format. More details: vuiew project ACControllMQTT
+- update homeassistant configuration folder with below .yaml files
+- For Air Conditioner platform, I re-coded default heatpump.py to ACControllMQTT_Sepo.py that can support control Air Conditioner via MQTT broker in JSON format. More details: view project ACControllMQTT
 
 New features:
 - Actionable Notification on iOS app
