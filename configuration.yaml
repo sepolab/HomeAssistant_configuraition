@@ -1,0 +1,111 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: SePo Lab
+  # Location required to calculate the time the sun rises and sets
+  latitude: 21.0333
+  longitude: 105.85
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 20
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # 1Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Asia/Ho_Chi_Minh
+ # awarenessDevicesOnWhenNotHome: false
+  customize: !include customize.yaml
+  customize_domain:
+    automation:
+      hidden: true
+     
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+#Enables configuration UI
+config:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: tri12345
+  # Uncomment this if you are using SSL or running in Docker etc
+  server_port: 8123
+#  ssl_certificate: /etc/letsencrypt/live/hass.example.com/fullchain.pem
+#  ssl_key: /etc/letsencryp
+  trusted_networks:
+    - 192.168.1.0/24
+
+mqtt:
+  broker: localhost
+  port: 1883
+  discovery: true
+  discovery_prefix: Trihome
+  
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+# discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+recorder:
+ purge_days: 365
+ exclude:
+   domains:
+     - automation
+     - climate
+     - conversation
+     - group
+     - logbook
+     - mqtt
+     - notify
+     - persistent_notification
+ include:
+    domains:
+      - sensor
+      - switch  
+      - device_tracker   
+# Enables support for tracking state changes over time.
+history:
+  include:
+    entities:
+     - sensor.bedroom_temperature
+     - sensor.bedroom_humidity
+    domains:
+     - device_tracker
+     - switch
+  exclude:
+    domains:
+     - automation
+     - climate
+     - conversation
+     - group
+     - logbook
+     - mqtt
+     - notify
+     - persistent_notification  
+# View all events in a logbook
+logbook:
+
+# Track the sun
+# sun:
+device_tracker: !include device_tracker.yaml
+     
+ios: !include ios.yaml
+
+sensor: !include sensor.yaml
+   
+binary_sensor: !include binary_sensor.yaml
+
+switch: !include switch.yaml
+
+group: !include group.yaml
+
+camera: !include camera.yaml
+
+climate: !include climate.yaml
+
+automation: !include automation.yaml

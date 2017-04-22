@@ -1,0 +1,490 @@
+#Automation.yaml
+
+#Automation schemes
+- alias: 'Rule0: Turn on room light when Sebastian home'
+  trigger:
+    platform: state
+    entity_id: device_tracker.tri_iphone
+    from: 'not_home'
+    to: 'home'
+  condition:
+  - condition: state
+    entity_id: device_tracker.tri_iphone
+    state: 'home'
+  - condition: time
+    after: '7:00:00'
+    before: '22:59:59'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.bedroom_ceilinglight        
+    - service: notify.ios_tri_ip5s
+      data:
+       message: "Chào Sebastian, nghỉ ngơi thôi!"
+       data:
+        push:
+          sound: "US-EN-Alexa-Welcome-Home.wav"
+
+- alias: 'Rule1: Turn on fan when humidity is bad'
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.bedroom_temperature
+    above: 28
+  - platform: numeric_state
+    entity_id: sensor.bedroom_humidity
+    above: 60
+  condition:  
+  - condition: time
+    after: '18:00:00'
+    before: '7:30:00'
+  - condition: state
+    entity_id: switch.bedroom_fan
+    state: 'off'
+  - condition: state
+    entity_id: switch.toshiba_air_conditioner
+    state: 'on'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.bedroom_fan   
+   
+
+- alias: 'Rule2: Turn off fan when humidity is good enough'
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.bedroom_temperature
+    below: 29.5
+  - platform: numeric_state
+    entity_id: sensor.bedroom_humidity
+    below: 50
+  condition:  
+  - condition: time
+    after: '18:00:00'
+    before: '7:30:00'
+  - condition: state
+    entity_id: switch.bedroom_fan
+    state: 'on'
+  - condition: state
+    entity_id: switch.toshiba_air_conditioner
+    state: 'on'
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.bedroom_fan
+        
+- alias: 'Rule3: Go Out for work'
+  trigger:
+  - platform: state
+    entity_id: device_tracker.tri_iphone
+    from: 'away'
+    to: 'home'
+  condition:  
+  - condition:  state
+    entity_id: device_tracker.tri_iphone
+    state: 'away'
+  - condition: time
+    after: '6:00:00'
+    before: '19:00:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.bedroom          
+
+
+#Notify to Mobile App schemes
+- alias: 'Notify1: iOS app bedrooomDesklight ON'
+  trigger:
+    platform: state
+    entity_id: switch.bedroom_desklight
+    from: 'off'
+    to: 'on'
+  condition:
+   - condition:  time
+     after: '8:00:00'
+     before: '18:00:00'
+   - condition:  state
+     entity_id: device_tracker.tri_iphone
+     state: 'not_home' 
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Đèn bàn đang bật."
+      data:
+        push:
+          sound: ""
+          category: "TURNOFF"
+        action_data: switch.bedroom_desklight
+
+
+- alias: 'Notify2: iOS app bedroomDesklight OFF'
+  trigger:
+    platform: state
+    entity_id: switch.bedroom_desklight
+    from: 'on'
+    to: 'off'
+  condition:
+   - condition:  time
+     after: '8:00:00'
+     before: '18:00:00'
+  # - condition:  state
+  #   entity_id: device_tracker.tri_iphone
+  #   state: 'not_home' 
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Đèn bàn đã tắt."
+      data:
+        push:
+          sound: ""
+          category: "TURNON"
+        action_data: switch.bedroom_desklight
+
+- alias: 'Notify3: iOS app bedroomFan ON'
+  trigger:
+    platform: state
+    entity_id: switch.bedroom_fan
+    from: 'off'
+    to: 'on'
+  condition:
+   - condition:  time
+     after: '8:00:00'
+     before: '18:00:00'
+  # - condition:  state
+  #   entity_id: device_tracker.tri_iphone
+  #   state: 'not_home' 
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Quạt đang bật."
+      data:
+        push:
+          sound: ""
+          category: "TURNOFF"
+        action_data: switch.bedroom_fan
+
+- alias: 'Notify4: iOS app bedroomFan OFF'
+  trigger:
+    platform: state
+    entity_id: switch.bedroom_fan
+    from: 'on'
+    to: 'off'
+  condition:
+   - condition:  time
+     after: '8:00:00'
+     before: '18:00:00'
+ #  - condition:  state
+ #    entity_id: device_tracker.tri_iphone
+ #    state: 'not_home' 
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Quạt đã tắt."
+      data:
+        push:
+          sound: ""
+          category: "TURNON"
+        action_data: switch.bedroom_fan
+
+- alias: 'Notify5: iOS app bedrooomCeilinglight ON'
+  trigger:
+    platform: state
+    entity_id: switch.bedroom_ceilinglight
+    from: 'off'
+    to: 'on'
+  condition:
+   - condition:  time
+     after: '8:00:00'
+     before: '18:00:00'
+ #  - condition:  state
+ #    entity_id: device_tracker.tri_iphone
+ #    state: 'not_home'     
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Đèn trần đang bật."
+      data:
+       push:
+        sound: "US-EN-Morgan-Freeman-Turning-On-The-Light.wav"
+        category: "TURNOFF"
+       action_data: switch.bedroom_ceilinglight
+       
+- alias: 'Notify6: iOS app bedrooomCeilinglight OFF'
+  trigger:
+    platform: state
+    entity_id: switch.bedroom_ceilinglight
+    from: 'on'
+    to: 'off'
+  condition:
+   - condition:  time
+     after: '8:00:00'
+     before: '18:00:00'
+ #  - condition:  state
+ #    entity_id: device_tracker.tri_iphone
+ #    state: 'not_home' 
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Đèn trần đã tắt."
+      data:
+        push:
+          sound: "US-EN-Morgan-Freeman-Turning-Off-The-Light.wav"
+          category: "TURNON"
+        action_data: switch.bedroom_ceilinglight
+
+- alias: 'Notify7: iOS app toshiba_air_conditioner ON'
+  trigger:
+    platform: state
+    entity_id: switch.toshiba_air_conditioner
+    from: 'off'
+    to: 'on'
+  condition:
+   - condition:  time
+     after: '8:00:00'
+     before: '18:00:00'
+ #  - condition:  state
+ #    entity_id: device_tracker.tri_iphone
+ #    state: 'not_home' 
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Máy lạnh đang bật"
+      data:
+        push:
+          sound: "US-EN-Morgan-Freeman-Turning-On-The-Air-Conditioner.wav"
+          category: "TURNOFF"
+        action_data: switch.toshiba_air_conditioner  
+
+- alias: 'Notify8: iOS app toshiba_air_conditioner OFF'
+  trigger:
+    platform: state
+    entity_id: switch.toshiba_air_conditioner
+    from: 'on'
+    to: 'off'
+  condition:
+   - condition:  time
+     after: '8:00:00'
+     before: '18:00:00'
+ #  - condition:  state
+ #    entity_id: device_tracker.tri_iphone
+ #    state: 'not_home' 
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Máy lạnh đã tắt."
+      data:
+        push:
+          sound: "US-EN-Morgan-Freeman-Turning-Off-The-Air-Conditioner.wav"
+          category: "TURNON"
+        action_data: switch.toshiba_air_conditioner
+          
+- alias: 'Notify9: iOS app RoomBrightness OFF'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bedroom_ceilingLight
+    from: 'on'
+    to: 'off'
+  condition:
+   - condition:  time
+     after: '8:00:00'
+     before: '18:00:00'
+ #  - condition:  state
+ #    entity_id: device_tracker.tri_iphone
+ #    state: 'not_home' 
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Phòng tối (theo cảm biến ánh sáng)"
+      data:
+          subtitle: "Room1 Sensor:"
+- alias: 'Notify10: iOS app RoomBrightness ON'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bedroom_ceilingLight
+    from: 'off'
+    to: 'on'
+  condition:
+   - condition:  time
+     after: '8:00:00'
+     before: '18:00:00'
+ #  - condition:  state
+ #    entity_id: device_tracker.tri_iphone
+ #    state: 'not_home' 
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Phòng sáng (theo cảm biến ánh sáng)"
+      data:
+          subtitle: "Room1 Sensor:"
+
+- alias: 'Notify11: iOS app RoomDoor OFF'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bedroom_door
+    from: 'on'
+    to: 'off'
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Cửa phòng vừa đóng."
+      data:
+          push:
+            category: "ALARM"
+            sound: "US-EN-Alexa-Patio-Door-Locked.wav"
+            
+- alias: 'Notify12: iOS app RoomDoor ON'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bedroom_door
+    from: 'off'
+    to: 'on'
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Cửa phòng vừa mở."
+      data:
+          push:
+            category: "ALARM"
+            sound: "US-EN-Alexa-Front-Door-Opened.wav"
+            
+
+
+#Alarm action that given by iOS App
+- alias: 'Alarm1: Sound Alarm'
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: SOUND_ALARM
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.bedroom_ceilinglight   
+         
+- alias: 'Alarm2: Silence Alarm'
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: SILENCE_ALARM
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.bedroom_ceilinglight
+    
+- alias: 'Actionable Notification 1: Turn desklight ON'
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TURN_ON
+      action_data: switch.bedroom_desklight
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.bedroom_desklight
+    
+- alias: 'Actionable Notification 2: Turn desklight OFF'
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TURN_OFF
+      action_data: switch.bedroom_desklight
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.bedroom_desklight
+
+- alias: 'Actionable Notification 3: Turn ceilinglight ON'
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TURN_ON
+      action_data: switch.bedroom_ceilinglight
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.bedroom_ceilinglight
+    
+- alias: 'Actionable Notification 4: Turn ceilinglight OFF'
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TURN_OFF
+      action_data: switch.bedroom_ceilinglight
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.bedroom_ceilinglight
+    
+- alias: 'Actionable Notification 5: Turn fan ON'
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TURN_ON
+      action_data: switch.bedroom_fan
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.bedroom_fan
+    
+- alias: 'Actionable Notification 6: Turn fan OFF'
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TURN_OFF
+      action_data: switch.bedroom_fan
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.bedroom_fan
+
+- alias: 'Actionable Notification 8: Turn AC ON'
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TURN_ON
+      action_data: switch.toshiba_air_conditioner
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.toshiba_air_conditioner
+    
+- alias: 'Actionable Notification 9: Turn AC OFF'
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TURN_OFF
+      action_data: switch.toshiba_air_conditioner
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.toshiba_air_conditioner
+
+
+
+#Reminder
+- alias: 'Reminder1: iOS app devices ON - Sebastian NOT HOME'
+  trigger:
+  - platform: time
+    minutes: '/15'
+    seconds: 00 
+  condition:
+   condition: and
+   conditions:
+   - condition:  state
+     entity_id: device_tracker.tri_iphone
+     state: 'not_home'
+   - condition: or
+     conditions:
+      - condition: state
+        entity_id: switch.bedroom_desklight
+        state: 'on'
+      - condition: state
+        entity_id: switch.bedroom_ceilinglight
+        state: 'on'
+      - condition: state
+        entity_id: switch.bedroom_fan
+        state: 'on'
+      - condition: state
+        entity_id: switch.toshiba_air_conditioner
+        state: 'on'   
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "Còn thiết bị trong phòng đang hoạt động. Xin kiểm tra hệ thống."
+      data:
+        push:
+          sound: ""

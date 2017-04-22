@@ -1,0 +1,9 @@
+#climate.yaml
+  - platform: heatpumpsepo
+    mqtt: localhost:1883
+    name: Toshiba_Air_Conditioner
+    topic: Trihome/tri01/set
+    Switch_device: switch.toshiba_air_conditioner
+    max_temp: 28
+    min_temp: 25
+    target_sensor: sensor.bedroom_temperature

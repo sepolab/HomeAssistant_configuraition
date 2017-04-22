@@ -1,0 +1,38 @@
+#switch.yaml
+
+  - platform: mqtt
+    name: bedroom_deskLight
+    state_topic: "Trihome/indoor/general"
+    command_topic: "Trihome/indoor/tri03"
+    payload_on: SETCONTROL2 ON
+    payload_off: SETCONTROL2 OFF
+    optimistic: false
+    qos: 0
+    retain: false  
+  - platform: mqtt
+    name: bedroom_fan
+    state_topic: "Trihome/indoor/general"
+    command_topic: "Trihome/indoor/tri03"
+    payload_on: SETCONTROL1 ON
+    payload_off: SETCONTROL1 OFF
+    optimistic: false
+    qos: 0
+    retain: false
+  - platform: mqtt
+    name: bedroom_ceilingLight
+    state_topic: "Trihome/bedroom/tri04/state"
+    command_topic: "Trihome/bedroom/tri04/set"
+    payload_on: SETCONTROL ON
+    payload_off: SETCONTROL OFF
+    optimistic: false
+    qos: 0
+    retain: false
+  - platform: mqtt
+    name: toshiba_air_conditioner
+    state_topic: "Trihome/tri01/state"
+    command_topic: "Trihome/tri01/set"
+    payload_on: CONTROLLAC ON
+    payload_off: CONTROLLAC OFF
+    optimistic: false
+    qos: 0
+    

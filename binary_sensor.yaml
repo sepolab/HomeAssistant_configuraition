@@ -1,0 +1,27 @@
+#binary_sensor.yaml
+
+  - platform: mqtt
+    state_topic: "Trihome/tri03/state"
+    name: outdoor_ceilingLight
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    device_class: light
+    value_template: '{{ value_json.light }}'
+  - platform: mqtt
+    state_topic: "Trihome/bedroom/tri04/state"
+    name: bedroom_door
+    qos: 0
+    payload_on: "0"
+    payload_off: "1"
+    device_class: safety
+    value_template: '{{ value_json.door }}'
+  - platform: mqtt
+    state_topic: "Trihome/bedroom/tri04/state"
+    name: bedroom_ceilingLight
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    device_class: light
+    value_template: '{{ value_json.light }}'
+

@@ -1,0 +1,9 @@
+#camera.yaml
+
+ - platform: foscam
+   ip: 192.168.1.18
+   port: 88
+   name: "Garden Camera"
+   username: home
+   password: home123
+  

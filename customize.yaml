@@ -1,0 +1,42 @@
+#Customize.yaml file
+
+    switch.bedroom_fan:
+      icon: mdi:fan
+      friendly_name: "Quạt Bàn"
+    switch.bedroom_ceilingLight:
+      icon: mdi:ceiling-light
+      friendly_name: "Đèn Trần"
+    switch.bedroom_deskLight:
+      icon: mdi:spotlight-beam
+      friendly_name: "Đèn Bàn"
+    sensor.bedroom_temperature:
+      friendly_name: "Nhiệt Độ"
+    sensor.bedroom_humidity:
+      friendly_name: "Độ Ẩm"
+      icon: mdi:water-percent
+    binary_sensor.bedroom_ceilinglight:
+      friendly_name: "Cảm Biến Ánh Sáng"
+    binary_sensor.outdoor_ceilinglight:
+      friendly_name: "Room Brightness"
+      hidden: true
+    binary_sensor.bedroom_door:
+      friendly_name: "Cửa Phòng"
+    homeassistant.awarenessDevicesOnWhenNotHome:
+      hidden: true
+    sensor.outdoor_temperature:
+      friendly_name: "Temperature"
+      hidden: true
+    sensor.outdoor_humidity:
+      friendly_name: "Humidity"
+      hidden: true
+      icon: mdi:water-percent
+    climate.Toshiba_Air_Conditioner:
+      friendly_name: "Remote Máy Lạnh"
+      icon: mdi:remote
+    switch.toshiba_air_conditioner:
+      friendly_name: "Máy Lạnh"
+      icon: mdi:air-conditioner
+    sensor.tri_battery_level:
+      hidden: true
+    sensor.tri_battery_state:
+      hidden: true    

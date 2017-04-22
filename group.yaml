@@ -1,0 +1,40 @@
+#group.yaml
+####VIEW
+#  bedroom_view:
+#      name: Bedroom
+#      view: yes
+#      entities:
+#        - sensor.bedroom_humidity
+#        - sensor.bedroom_temperature
+#        - binary_sensor.bedroom_ceilinglight
+#        - binary_sensor.bedroom_door
+#        - switch.bedroom_desklight
+#        - switch.bedroom_fan
+#        
+#   family_view:
+#      name: Family
+#      view: yes
+#      entities:
+#        - device_tracker.tri_iphone
+       
+####GROUP
+    bedroom:
+       name: Room 1
+       entities:
+         - sensor.bedroom_temperature
+         - sensor.bedroom_humidity
+         - binary_sensor.bedroom_ceilinglight
+         - binary_sensor.bedroom_door
+         - switch.bedroom_ceilingLight
+         - switch.bedroom_desklight
+         - switch.bedroom_fan
+         - switch.toshiba_air_conditioner
+         - climate.toshiba_air_conditioner
+         
+    outdoor:
+       name: Garden
+       entities:
+         - sensor.outdoor_temperature
+         - sensor.outdoor_humidity
+         - binary_sensor.outdoor_ceilinglight
+         - camera.ban_cong_camera

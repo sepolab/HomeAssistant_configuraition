@@ -1,0 +1,51 @@
+#ios.yaml
+
+  push:
+    categories:
+      - name: Alarm
+        identifier: 'ALARM'
+        actions:
+          - identifier: 'SOUND_ALARM'
+            title: 'Bật Chuông Báo Động'
+            activationMode: 'background'
+            authenticationRequired: yes
+            destructive: yes
+            behavior: 'default'
+          - identifier: 'SILENCE_ALARM'
+            title: 'Cảnh Báo Người Thân'
+            activationMode: 'background'
+            authenticationRequired: yes
+            destructive: no
+            behavior: 'default'
+            
+      - name: TurnON
+        identifier: 'TURNON'
+        actions:
+          - identifier: 'TURN_ON'
+            title: 'Bật thiết bị'
+            activationMode: 'background'
+            authenticationRequired: yes
+            destructive: yes
+            behavior: 'default'
+          - identifier: KEEP_STATE'
+            title: 'Giữ hiện trạng'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: no
+            behavior: 'default'
+            
+      - name: TurnOFF
+        identifier: 'TURNOFF'
+        actions:
+          - identifier: 'TURN_OFF'
+            title: 'Tắt thiết bị'
+            activationMode: 'background'
+            authenticationRequired: yes
+            destructive: yes
+            behavior: 'default'
+          - identifier: KEEP_STATE'
+            title: 'Giữ hiện trạng'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: no
+            behavior: 'default'
