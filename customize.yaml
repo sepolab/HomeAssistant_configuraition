@@ -21,14 +21,10 @@
       hidden: true
     binary_sensor.bedroom_door:
       friendly_name: "Cửa Phòng"
-    homeassistant.awarenessDevicesOnWhenNotHome:
-      hidden: true
     sensor.outdoor_temperature:
-      friendly_name: "Temperature"
-      hidden: true
+      friendly_name: "Nhiệt Độ"
     sensor.outdoor_humidity:
-      friendly_name: "Humidity"
-      hidden: true
+      friendly_name: "Độ Ẩm"
       icon: mdi:water-percent
     climate.Toshiba_Air_Conditioner:
       friendly_name: "Remote Máy Lạnh"
@@ -39,4 +35,11 @@
     sensor.tri_battery_level:
       hidden: true
     sensor.tri_battery_state:
-      hidden: true    
+      hidden: true
+    switch.alarm:
+      icon: mdi:security-home
+      friendly_name: "Báo Động"
+    binary_sensor.ishuman:
+      friendly_name: "Cầu Thang"
+    sensor.dark_sky_summary:
+      friendly_name: "Thời Tiết"

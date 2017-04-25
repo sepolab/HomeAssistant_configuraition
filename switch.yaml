@@ -2,22 +2,22 @@
 
   - platform: mqtt
     name: bedroom_deskLight
-    state_topic: "Trihome/indoor/general"
-    command_topic: "Trihome/indoor/tri03"
+    state_topic: "Trihome/tri02/state"
+    command_topic: "Trihome/tri02/set"
     payload_on: SETCONTROL2 ON
     payload_off: SETCONTROL2 OFF
     optimistic: false
     qos: 0
-    retain: false  
+    retain: true  
   - platform: mqtt
     name: bedroom_fan
-    state_topic: "Trihome/indoor/general"
-    command_topic: "Trihome/indoor/tri03"
+    state_topic: "Trihome/tri02/state"
+    command_topic: "Trihome/tri02/set"
     payload_on: SETCONTROL1 ON
     payload_off: SETCONTROL1 OFF
     optimistic: false
     qos: 0
-    retain: false
+    retain: true
   - platform: mqtt
     name: bedroom_ceilingLight
     state_topic: "Trihome/bedroom/tri04/state"
@@ -26,7 +26,16 @@
     payload_off: SETCONTROL OFF
     optimistic: false
     qos: 0
-    retain: false
+    retain: true
+  - platform: mqtt
+    name: alarm
+    state_topic: "Trihome/tri03/state"
+    command_topic: "Trihome/tri03/set"
+    payload_on: ALARM ON
+    payload_off: ALARM OFF
+    optimistic: false
+    retain: true
+    qos: 0
   - platform: mqtt
     name: toshiba_air_conditioner
     state_topic: "Trihome/tri01/state"
@@ -34,5 +43,5 @@
     payload_on: CONTROLLAC ON
     payload_off: CONTROLLAC OFF
     optimistic: false
-    qos: 0
-    
+    qos: 0 
+    retain: true  

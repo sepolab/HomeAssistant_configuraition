@@ -3,7 +3,10 @@
  - platform: foscam
    ip: 192.168.1.18
    port: 88
-   name: "Garden Camera"
+   name: "Ban Công"
    username: home
    password: home123
   
+ - platform: local_file
+   name: "Phòng 1"
+   file_path: /tmp/motion/lastsnap.jpg

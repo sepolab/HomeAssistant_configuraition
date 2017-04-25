@@ -1,0 +1,81 @@
+
+
+GrandPa:
+  hide_if_away: false
+  mac: 5C:0A:5B:EE:07:D8
+  name: GrandPa
+  picture: /local/Grandpa.png
+  track: true
+  vendor: SAMSUNG ELECTRO MECHANICS CO., LTD.
+
+00626e64235a:
+  hide_if_away: false
+  mac: 00:62:6E:64:23:5A
+  name: 00626e64235a
+  picture:
+  track: false
+  vendor: unknown
+
+5ccf7f87fc58:
+  hide_if_away: false
+  mac: 5C:CF:7F:87:FC:58
+  name: 5ccf7f87fc58
+  picture:
+  track: false
+  vendor: Espressif Inc.
+
+iMac:
+  hide_if_away: false
+  mac: EC:35:86:4B:F4:3C
+  name: ec35864bf43c
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+5ccf7f1ba8f0:
+  hide_if_away: false
+  mac: 5C:CF:7F:1B:A8:F0
+  name: 5ccf7f1ba8f0
+  picture:
+  track: false
+  vendor: Espressif Inc.
+
+18fe34cdb562:
+  hide_if_away: false
+  mac: 18:FE:34:CD:B5:62
+  name: 18fe34cdb562
+  picture:
+  track: false
+  vendor: Espressif Inc.
+
+6001941a88a3:
+  hide_if_away: false
+  mac: 60:01:94:1A:88:A3
+  name: 6001941a88a3
+  picture:
+  track: false
+  vendor: Espressif Inc.
+
+tri_iphone:
+  hide_if_away: false
+  mac: F8:27:93:0C:93:52
+  name: Sebastian
+  picture: /local/Sebastian.png
+  track: true
+  vendor: Apple, Inc.
+
+iPad2:
+  hide_if_away: false
+  mac: A4:D1:D2:B0:92:DA
+  name: a4d1d2b092da
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+Grandma:
+  hide_if_away: false
+  mac: 10:1C:0C:70:4F:E6
+  name: Grandma
+  picture: /local/Grandma.png
+  track: true
+  vendor: Apple, Inc.

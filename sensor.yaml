@@ -19,5 +19,9 @@
    state_topic: "Trihome/tri03/state"
    name: outdoor_humidity
    unit_of_measurement: '%'
-   value_template: '{{ value_json.humidity }}'
-   
+   value_template: '{{ value_json.humidity }}' 
+ - platform: darksky
+   api_key: 056dd0620ba02ffec742f2c31163608c
+   monitored_conditions:
+      - summary
+   update_interval: '00:20:00'
