@@ -104,7 +104,7 @@
   action:
     service: notify.ios_tri_ip5s
     data:
-      message: "Đèn bàn đang bật."
+      message: "Thông báo: Đèn bàn đang bật."
       data:
         push:
           sound: ""
@@ -122,13 +122,13 @@
    - condition:  time
      after: '8:00:00'
      before: '18:00:00'
-  # - condition:  state
-  #   entity_id: device_tracker.tri_iphone
-  #   state: 'not_home' 
+   - condition:  state
+     entity_id: device_tracker.tri_iphone
+     state: 'not_home' 
   action:
     service: notify.ios_tri_ip5s
     data:
-      message: "Đèn bàn đã tắt."
+      message: "Thông báo: Đèn bàn đã tắt."
       data:
         push:
           sound: ""
@@ -145,13 +145,13 @@
    - condition:  time
      after: '8:00:00'
      before: '18:00:00'
-  # - condition:  state
-  #   entity_id: device_tracker.tri_iphone
-  #   state: 'not_home' 
+   - condition:  state
+     entity_id: device_tracker.tri_iphone
+     state: 'not_home' 
   action:
     service: notify.ios_tri_ip5s
     data:
-      message: "Quạt đang bật."
+      message: "Thông báo: Quạt đang bật."
       data:
         push:
           sound: ""
@@ -168,13 +168,13 @@
    - condition:  time
      after: '8:00:00'
      before: '18:00:00'
- #  - condition:  state
- #    entity_id: device_tracker.tri_iphone
- #    state: 'not_home' 
+   - condition:  state
+     entity_id: device_tracker.tri_iphone
+     state: 'not_home' 
   action:
     service: notify.ios_tri_ip5s
     data:
-      message: "Quạt đã tắt."
+      message: "Thông báo: Quạt đã tắt."
       data:
         push:
           sound: ""
@@ -191,13 +191,13 @@
    - condition:  time
      after: '8:00:00'
      before: '18:00:00'
- #  - condition:  state
- #    entity_id: device_tracker.tri_iphone
- #    state: 'not_home'     
+   - condition:  state
+     entity_id: device_tracker.tri_iphone
+     state: 'not_home'     
   action:
     service: notify.ios_tri_ip5s
     data:
-      message: "Đèn trần đang bật."
+      message: "Thông báo: Đèn trần đang bật."
       data:
        push:
         sound: "US-EN-Morgan-Freeman-Turning-On-The-Light.wav"
@@ -214,13 +214,13 @@
    - condition:  time
      after: '8:00:00'
      before: '18:00:00'
- #  - condition:  state
- #    entity_id: device_tracker.tri_iphone
- #    state: 'not_home' 
+   - condition:  state
+     entity_id: device_tracker.tri_iphone
+     state: 'not_home' 
   action:
     service: notify.ios_tri_ip5s
     data:
-      message: "Đèn trần đã tắt."
+      message: "Thông báo: Đèn trần đã tắt."
       data:
         push:
           sound: "US-EN-Morgan-Freeman-Turning-Off-The-Light.wav"
@@ -237,13 +237,13 @@
    - condition:  time
      after: '8:00:00'
      before: '18:00:00'
- #  - condition:  state
- #    entity_id: device_tracker.tri_iphone
- #    state: 'not_home' 
+   - condition:  state
+     entity_id: device_tracker.tri_iphone
+     state: 'not_home' 
   action:
     service: notify.ios_tri_ip5s
     data:
-      message: "Máy lạnh đang bật"
+      message: "Thông báo: Máy lạnh đang bật"
       data:
         push:
           sound: "US-EN-Morgan-Freeman-Turning-On-The-Air-Conditioner.wav"
@@ -260,57 +260,19 @@
    - condition:  time
      after: '8:00:00'
      before: '18:00:00'
- #  - condition:  state
- #    entity_id: device_tracker.tri_iphone
- #    state: 'not_home' 
+   - condition:  state
+     entity_id: device_tracker.tri_iphone
+     state: 'not_home' 
   action:
     service: notify.ios_tri_ip5s
     data:
-      message: "Máy lạnh đã tắt."
+      message: "Thông báo: Máy lạnh đã tắt."
       data:
         push:
           sound: "US-EN-Morgan-Freeman-Turning-Off-The-Air-Conditioner.wav"
           category: "TURNON"
         action_data: switch.toshiba_air_conditioner
           
-- alias: 'Notify9: iOS app RoomBrightness OFF'
-  trigger:
-    platform: state
-    entity_id: binary_sensor.bedroom_ceilingLight
-    from: 'on'
-    to: 'off'
-  condition:
-   - condition:  time
-     after: '8:00:00'
-     before: '18:00:00'
- #  - condition:  state
- #    entity_id: device_tracker.tri_iphone
- #    state: 'not_home' 
-  action:
-    service: notify.ios_tri_ip5s
-    data:
-      message: "Phòng tối (theo cảm biến ánh sáng)"
-      data:
-          subtitle: "Room1 Sensor:"
-- alias: 'Notify10: iOS app RoomBrightness ON'
-  trigger:
-    platform: state
-    entity_id: binary_sensor.bedroom_ceilingLight
-    from: 'off'
-    to: 'on'
-  condition:
-   - condition:  time
-     after: '8:00:00'
-     before: '18:00:00'
- #  - condition:  state
- #    entity_id: device_tracker.tri_iphone
- #    state: 'not_home' 
-  action:
-    service: notify.ios_tri_ip5s
-    data:
-      message: "Phòng sáng (theo cảm biến ánh sáng)"
-      data:
-          subtitle: "Room1 Sensor:"
 
 - alias: 'Notify11: iOS app RoomDoor OFF'
   trigger:
@@ -321,7 +283,7 @@
   action:
     service: notify.ios_tri_ip5s
     data:
-      message: "Cửa phòng vừa đóng."
+      message: "An Ninh: Cửa phòng 1 đóng"
       data:
           push:
             category: "ALARM"
@@ -336,13 +298,26 @@
   action:
     service: notify.ios_tri_ip5s
     data:
-      message: "Cửa phòng vừa mở."
+      message: "An Ninh: Cửa phòng 1 mở"
       data:
           push:
             category: "ALARM"
             sound: "US-EN-Alexa-Front-Door-Opened.wav"
             
-
+- alias: 'Notify13: iOS app Human Stair'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.ishuman
+    from: 'off'
+    to: 'on'
+  action:
+    service: notify.ios_tri_ip5s
+    data:
+      message: "An Ninh: Khu vực cầu thang"
+      data:
+          push:
+            category: "ALARM"
+            sound: "US-EN-Morgan-Freeman-Motion-Detected.wav"
 
 #Alarm action that given by iOS App
 - alias: 'Alarm1: Sound Alarm'
@@ -352,8 +327,8 @@
     event_data:
       actionName: SOUND_ALARM
   action:
-    service: homeassistant.turn_off
-    entity_id: switch.bedroom_ceilinglight   
+    service: homeassistant.turn_on
+    entity_id: switch.alarm 
          
 - alias: 'Alarm2: Silence Alarm'
   trigger:
@@ -362,8 +337,8 @@
     event_data:
       actionName: SILENCE_ALARM
   action:
-    service: homeassistant.turn_on
-    entity_id: switch.bedroom_ceilinglight
+    service: homeassistant.turn_off
+    entity_id: switch.alarm
     
 - alias: 'Actionable Notification 1: Turn desklight ON'
   trigger:
@@ -484,7 +459,7 @@
   action:
     service: notify.ios_tri_ip5s
     data:
-      message: "Còn thiết bị trong phòng đang hoạt động. Xin kiểm tra hệ thống."
+      message: "Thông báo: Còn thiết bị đang hoạt động"
       data:
         push:
           sound: ""

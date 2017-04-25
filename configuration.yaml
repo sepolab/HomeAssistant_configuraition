@@ -27,7 +27,7 @@ config:
 
 http:
   # Uncomment this to add a password (recommended!)
-  api_password: tri12345
+  api_password: tn17691510
   # Uncomment this if you are using SSL or running in Docker etc
   server_port: 8123
 #  ssl_certificate: /etc/letsencrypt/live/hass.example.com/fullchain.pem

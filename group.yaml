@@ -19,22 +19,29 @@
        
 ####GROUP
     bedroom:
-       name: Room 1
+       name: Phòng 1
        entities:
          - sensor.bedroom_temperature
          - sensor.bedroom_humidity
          - binary_sensor.bedroom_ceilinglight
-         - binary_sensor.bedroom_door
          - switch.bedroom_ceilingLight
          - switch.bedroom_desklight
          - switch.bedroom_fan
          - switch.toshiba_air_conditioner
          - climate.toshiba_air_conditioner
-         
+
     outdoor:
-       name: Garden
+       name: Ngoài Trời
        entities:
+         - sensor.dark_sky_summary
          - sensor.outdoor_temperature
          - sensor.outdoor_humidity
-         - binary_sensor.outdoor_ceilinglight
-         - camera.ban_cong_camera
+             
+    Security:
+       name: An Ninh
+       entities:
+         - switch.alarm
+         - binary_sensor.bedroom_door
+         - binary_sensor.ishuman
+         - camera.garden_camera
+         - camera.room_1
